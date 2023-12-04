@@ -6,10 +6,10 @@ from django.core.management.base import BaseCommand
 from main.models import Proizvod_bezIndeksa, Proizvod_SIndeksom, Proizvod_KriviIndeks, Proizvod_DioIndeksa
 from main.factory import *
 
-NUM_PROIZVODBEZINDEKSA = 10000
-NUM_PROIZVODSINDEKSOM = 10000
-NUM_PROIZVODDIOINDEKSA = 10000
-NUM_PROIZVODKRIVIINDEKS = 10000
+NUM_PROIZVODBEZINDEKSA = 100000
+NUM_PROIZVODSINDEKSOM = 100000
+NUM_PROIZVODDIOINDEKSA = 100000
+NUM_PROIZVODKRIVIINDEKS = 100000
 
 class Command(BaseCommand):
     help = "Generates test data"
