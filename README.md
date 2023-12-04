@@ -8,12 +8,12 @@ cd yourPath/rootFolder
 ```
 If you already are in the root folder (where the Dockerfile is located), build your docker image with:
 ```
-docker build -t yourChosenName .
+docker build -t yourchosenname .
 ```
 
 and then run the container with:
 ```
-docker run -p 8000:8000 yourChosenName
+docker run -p 8000:8000 yourchosenname
 ```
 After running the container, the app should be available on URL:
 ```
