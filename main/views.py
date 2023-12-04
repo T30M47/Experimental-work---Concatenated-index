@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
 from .models import *
+from django.shortcuts import render
+from django.http import HttpResponse
 # Create your views here.
+
+def homepage(request):
+    return HttpResponse('<h1>Testing read request response time with and without concatenated index.</h1>')
 
 class GetDataWithoutIndex(View):
     def get(self, request):
