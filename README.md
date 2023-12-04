@@ -22,7 +22,7 @@ After running the container, the app should be available on URL:
 http://localhost:8000
 ```
 The home page contains more description on how to benchmark this model, but you can also find some instructions over here:
- 1. I used ab (Apache Benchmark) for testing read respponse time, so You have to install it:
+ 1. I used ab (Apache Benchmark) for testing read response time, so You have to install it:
     ### Debian based Linux
     ```
     sudo apt-get install apache2-utils
