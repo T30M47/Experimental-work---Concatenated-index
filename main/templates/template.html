@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmark of Concatenated Index</title>
+</head>
+<body>
+    <h1>Testing read response time with and without <strong>Concatenated Index</strong></h1>
+    <p>After the test is done and You get a JSON response, You should return to the home page using the back arrow in Your browser.</p>
+    <p>The longest test will take about 6 to 7 seconds so You should be patient (check if Your browser is loading)...</p>
+    <h2>Tests without Index:</h2>
+    <p>These queries do not use index so they should be slower.</p>
+    <button><a href ="/testWithoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1975-07-04">Run 1st test without Index.</a></button>
+    <button><a href ="/testWithoutIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=2023-05-18">Run 2st test without Index.</a></button>
+    <button><a href ="/testWithoutIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1973-04-07">Run 3st test without Index.</a></button><br>
+    <br>
+    <h2>Tests with Index:</h2>
+    <p>These tests should be faster because of the index...</p>
+    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1972-08-06">Run 1st test with Index.</a></button>
+    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1989-12-25">Run 2st test with Index.</a></button>
+    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2007-04-13">Run 3st test with Index.</a></button><br>
+</body>
+</html>
