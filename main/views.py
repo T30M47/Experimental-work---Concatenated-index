@@ -110,3 +110,43 @@ def testWithIndex(request):
     }
     
     return JsonResponse(response_data)
+
+def testWithPartIndex(request):
+    naziv = request.GET.get('naziv', '')
+    cijena = request.GET.get('cijena', '')
+    datum_kreiranja = request.GET.get('datum_kreiranja', '')
+    
+    url = f"http://localhost:8000/withPartIndex/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
+    result = subprocess.run(['ab', '-n', '1000', '-c', '3', url], capture_output=True, text=True)
+    output = result.stdout.splitlines()
+    
+    response_data = {
+        'parameters': {
+            'naziv': naziv,
+            'cijena': cijena,
+            'datum_kreiranja': datum_kreiranja,
+        },
+        'output': output,
+    }
+    
+    return JsonResponse(response_data)
+
+def testWithWrongIndex(request):
+    naziv = request.GET.get('naziv', '')
+    cijena = request.GET.get('cijena', '')
+    datum_kreiranja = request.GET.get('datum_kreiranja', '')
+    
+    url = f"http://localhost:8000/withWrongIndex/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
+    result = subprocess.run(['ab', '-n', '1000', '-c', '3', url], capture_output=True, text=True)
+    output = result.stdout.splitlines()
+    
+    response_data = {
+        'parameters': {
+            'naziv': naziv,
+            'cijena': cijena,
+            'datum_kreiranja': datum_kreiranja,
+        },
+        'output': output,
+    }
+    
+    return JsonResponse(response_data)

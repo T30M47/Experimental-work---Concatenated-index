@@ -11,14 +11,26 @@
     <p>The longest test will take about 6 to 7 seconds so You should be patient (check if Your browser is loading)...</p>
     <h2>Tests without Index:</h2>
     <p>These queries do not use index so they should be slower.</p>
-    <button><a href ="/testWithoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1975-07-04">Run 1st test without Index.</a></button>
+    <button><a href ="/testWithoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1994-07-18">Run 1st test without Index.</a></button>
     <button><a href ="/testWithoutIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=2023-05-18">Run 2st test without Index.</a></button>
-    <button><a href ="/testWithoutIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1973-04-07">Run 3st test without Index.</a></button><br>
+    <button><a href ="/testWithoutIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1973-04-07">Run 3rd test without Index.</a></button><br>
     <br>
     <h2>Tests with Index:</h2>
     <p>These tests should be faster because of the index...</p>
-    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1972-08-06">Run 1st test with Index.</a></button>
-    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1989-12-25">Run 2st test with Index.</a></button>
-    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2007-04-13">Run 3st test with Index.</a></button><br>
+    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=2015-06-16">Run 1st test with Index.</a></button>
+    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1984-03-04">Run 2st test with Index.</a></button>
+    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2006-06-23">Run 3rd test with Index.</a></button><br>
+    <br>
+    <h2>Tests with Part Index (index on only name and price):</h2>
+    <p>These tests should be about as slow as without index...</p>
+    <button><a href ="/testWithPartIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1976-11-29">Run 1st test with part Index.</a></button>
+    <button><a href ="/testWithPartIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1991-11-22">Run 2st test with part Index.</a></button>
+    <button><a href ="/testWithPartIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2008-08-15">Run 3rd test with part Index.</a></button><br>
+    <br>
+    <h2>Tests with Wrong Index (reverse order of columns):</h2>
+    <p>These tests should be about the same as with normal index...</p>
+    <button><a href ="/testWithWrongIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1977-01-12">Run 1st test with wrong Index.</a></button>
+    <button><a href ="/testWithWrongIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=2022-06-23">Run 2st test with wrong Index.</a></button>
+    <button><a href ="/testWithWrongIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2002-02-24">Run 3rd test with wrong Index.</a></button><br>
 </body>
 </html>
