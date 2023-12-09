@@ -52,4 +52,4 @@ If You want You could also try to send Your own requests by going to URL:
 ```
 http://localhost:8000/admin
 ```
-and login with username: admin, password: admin data and try to do a request for data You choose.
+and login with username: admin, password: admin data, and try to do a request for data You choose based on the given URLs before.
