@@ -21,29 +21,29 @@ After running the container, the app should be available on URL:
 ```
 http://localhost:8000
 ```
-The home page contains more description on how to benchmark this model, but you can also find some instructions over here:
- 1. I used ab (Apache Benchmark) for testing read response time, so You have to install it:
+The home page contains a short description on how to benchmark this model, but you can also find some instructions over here:
+ 1. The homepage contains three buttons for each type of queries (without, with concat. index, with part of concat. index and with concat. index with wrong order of columns).
+ 2. To test response times You can click on a button (check if your browser is loading) and wait that you get forwarded to the page with JSON response with summary of ab test.
+ 3. You can get back to the home page with the left arrow integrated in Your browser (normal "go back" button/action).
+ 4. You can compare different read response times by clicking on different buttons on for different indexes.
+
+#### **HELP OR ADDITIONAL INFORMATION**
+ If you have trouble with starting the test you should look at errors which appear in the terminal where You started the app.
+ If the error is appearing because You do not have ab installed or if you want to try ab requests in your own terminal, You should install it:
     ### Debian based Linux
     ```
     sudo apt-get install apache2-utils
     ```
     ### Arch based Linux
     ```
-    sudo pacman -S apache-tools or just sudo pacman -S apache
+    sudo pacman -S apache-tools 
+    or just 
+    sudo pacman -S apache
     ```
- 2. After running the Docker Container with the web app you can use ab to send read requests to specific urls, and i used it like this:
-    ```
-    ab -n 1000 -c 3 "URL"
-    # to send 1000 requests with 3 concurrent requests
-    ```
- 3. You have four options for URLs based on different types of indexes on different tables with the same types and amount of data:
-    *  "http://127.0.0.1:8000/withoutIndex/?naziv=value1&cijena=value2&datum_kreiranja=value3"
-    *  "http://127.0.0.1:8000/withIndex/?naziv=value1&cijena=value2&datum_kreiranja=value3"
-    *  "http://127.0.0.1:8000/withPartIndex/?naziv=value1&cijena=value2&datum_kreiranja=value3"
-    *  "http://127.0.0.1:8000/withWrongIndex/?naziv=value1&cijena=value2&datum_kreiranja=value3"
- 4. Here are some combinations that you can put for values in URLs:
-    1. for URL without index:
-       * first combination: "http://127.0.0.1:8000/withoutIndex/?naziv=improve&cijena=34.21&datum_kreiranja=1989-04-03"
-       * second combination: "http://127.0.0.1:8000/withoutIndex/?naziv=gas&cijena=433.57&datum_kreiranja=2015-11-02"
-       * third combination: "http://127.0.0.1:8000/withoutIndex/?naziv=beyond&cijena=903.39&datum_kreiranja=1983-04-08"
- 5. You can use your own combination if You go to "http://localhost:8000/admin" and login with admin for username and admin for password where you can find specific data and then query it.
+ **I used ab command with -n 1000 and -c 3 parameters.**
+
+Here are examples of URLs for every type of index that you could test and send ab requests to:
+* http://127.0.0.1:8000/withoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1973-11-21
+* http://127.0.0.1:8000/withIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1999-03-23
+* http://127.0.0.1:8000/withPartIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2009-06-23
+* http://127.0.0.1:8000/withWrongIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1996-03-12
