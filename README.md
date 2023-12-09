@@ -42,8 +42,14 @@ The home page contains a short description on how to benchmark this model, but y
     ```
  **I used ab command with -n 1000 and -c 3 parameters.**
 
-Here are examples of URLs for every type of index that you could test and send ab requests to in Your iwn terminal:
+Here are examples of URLs for every type of index that you could test and send ab requests to in Your own terminal:
 * http://127.0.0.1:8000/withoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1973-11-21
 * http://127.0.0.1:8000/withIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1999-03-23
 * http://127.0.0.1:8000/withPartIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2009-06-23
 * http://127.0.0.1:8000/withWrongIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1996-03-12
+
+If You want You could also try to send Your own requests by going to URL:
+```
+http://localhost:8000/admin
+```
+and login with username: admin, password: admin data and try to do a request for data You choose.
