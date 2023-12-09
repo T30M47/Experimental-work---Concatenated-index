@@ -30,11 +30,11 @@ The home page contains a short description on how to benchmark this model, but y
 #### **HELP OR ADDITIONAL INFORMATION**
  If you have trouble with starting the test you should look at errors which appear in the terminal where You started the app.
  If the error is appearing because You do not have ab installed or if you want to try ab requests in your own terminal, You should install it:
-    ### Debian based Linux
+ ### Debian based Linux
     ```
     sudo apt-get install apache2-utils
     ```
-    ### Arch based Linux
+ ### Arch based Linux
     ```
     sudo pacman -S apache-tools 
     or just 
@@ -42,7 +42,7 @@ The home page contains a short description on how to benchmark this model, but y
     ```
  **I used ab command with -n 1000 and -c 3 parameters.**
 
-Here are examples of URLs for every type of index that you could test and send ab requests to:
+Here are examples of URLs for every type of index that you could test and send ab requests to in Your iwn terminal:
 * http://127.0.0.1:8000/withoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1973-11-21
 * http://127.0.0.1:8000/withIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1999-03-23
 * http://127.0.0.1:8000/withPartIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2009-06-23
