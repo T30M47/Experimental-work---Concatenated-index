@@ -42,3 +42,20 @@ Ti ab testovi su zapravo bili slani na URL koji su pokretali nove poglede unutar
 
 Web Server unutar Django web aplikacije ne komunicira direktno s bazom podataka jer on služi samo za vraćanje statičnih odgovora pa je time GET upit na određeni URL prvo došao do web servera (Django development server) koji ga je onda proslijedio do aplikacijskog servera ili same Django aplikacije gdje su se onda pregledavali URL-ovi, pozivali određeni pogledi i prevodili modeli u tablice baze podataka (ORM). 
 Upiti na svaku tablicu su izgledali jednako te je njihov generalni pseudokod prikazan na vrhu slike. Kod slanja određenih URL-ova, osim odgovarajuće putanje, dodani su i parametri sa znakom upitnika koji su bili odvojeni znakom & te su oni predstavljali vrijednosti stupaca (/?naziv=name&cijena=price&datum_kreiranja=date). 
+
+### Simulacija podataka 
+
+Same podatke sam simulirao pomoću factory-boy-a i Faker-a koji služe za kreiranje lažnih podataka. U svaku tablicu sam kreirao točno 100000 podataka kako bi svaka tablica bila jednaka. Kako sam kreirao indekse nad stupcima naziv, cijena i datum_kreiranja upite sam provodio nad njima. Kada sam za sve stupce koristio potpuno različite podatke rezultati upita s različitim vrstama indeksa nisu bili toliko različiti. Time sam za naziv i cijenu koristio samo tri moguće vrijednosti kako bi bolje prikazao performanse djelomičnog indeksa koji je sadržavao samo stupce naziv i cijena.
+
+```
+class ProizvodFactory(DjangoModelFactory):
+    class Meta:
+        abstract = True
+    
+    naziv = factory.Iterator(["bread", "eggs", "milk"])#factory.Faker("word")
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Iterator([1.99, 9.99, 2.99])#factory.Faker("pydecimal", left_digits=random.choice([1, 2, 3]), right_digits=2, positive = True)
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+```
