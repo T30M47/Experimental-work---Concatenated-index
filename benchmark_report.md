@@ -45,16 +45,18 @@ Upiti na svaku tablicu su izgledali jednako te je njihov generalni pseudokod pri
 
 ### Simulacija podataka 
 
-Same podatke sam simulirao pomoću factory-boy-a i Faker-a koji služe za kreiranje lažnih podataka. U svaku tablicu sam kreirao točno 100000 podataka kako bi svaka tablica bila jednaka. Kako sam kreirao indekse nad stupcima naziv, cijena i datum_kreiranja upite sam provodio nad njima. Kada sam za sve stupce koristio potpuno različite podatke rezultati upita s različitim vrstama indeksa nisu bili toliko različiti. Time sam za naziv i cijenu koristio samo tri moguće vrijednosti kako bi bolje prikazao performanse djelomičnog indeksa koji je sadržavao samo stupce naziv i cijena.
+Same podatke sam simulirao pomoću factory-boy-a i Faker-a koji služe za kreiranje lažnih podataka. U svaku tablicu sam kreirao točno 100000 podataka kako bi svaka tablica bila jednaka. Kako sam kreirao indekse nad stupcima naziv, cijena i datum_kreiranja upite sam provodio nad njima. Kako bi testirao performanse indeksa na različitoj kardinalnosti vrijednosti atributa naziva i cijene kreirao sam dvije vrste naziva i cijene. U običnom nazivu sam za naziv i cijenu koristio samo tri moguće vrijednosti kako bi bolje prikazao performanse djelomičnog indeksa koji je sadržavao samo stupce naziv i cijena. U naziv_random i cijena_random sam generirao potpuno različite podatke s Fakerom.
 
 ```
 class ProizvodFactory(DjangoModelFactory):
     class Meta:
         abstract = True
     
-    naziv = factory.Iterator(["bread", "eggs", "milk"])#factory.Faker("word")
+    naziv = factory.Iterator(["bread", "eggs", "milk"])
+    naziv_random = factory.Faker("word")
     opis = factory.Faker("sentence", nb_words = 10)
-    cijena = factory.Iterator([1.99, 9.99, 2.99])#factory.Faker("pydecimal", left_digits=random.choice([1, 2, 3]), right_digits=2, positive = True)
+    cijena = factory.Iterator([1.99, 9.99, 2.99])
+    cijena_random = factory.Faker("pydecimal", left_digits=random.choice([1, 2, 3]), right_digits=2, positive = True)
     dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
     datum_kreiranja = factory.Faker('date_time')
     datum_azuriranja = factory.Faker('date_time')
