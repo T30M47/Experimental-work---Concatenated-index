@@ -4,6 +4,8 @@
 
 ## Sažetak testiranog koncepta
 
+---
+
 U ovom benchmarku je testiran koncept konkateniranog (složenog indeksa). To je indeks na tablici u bazi podataka koji uključuje više od jednoga stupca te služi za brže pretraživanje podataka. Time, umjesto da se kreira na jednome stupcu kao i obični indeks, konkatenirani indeks se kreira na više stupaca tablice. Time, ako bi imali tablicu sa stupcima prezime i ime te ako bi često postavljali upite koji uključuju filtriranje po tim stupcima konkatenirani indeks s tim stupcima može poboljšati efikasnost upita. Sami stupci se mogu pojaviti u bilo kojem poretku unutar indeksa, ali da bi se postigla veća efikasnost upiti moraju referencirati sve ili vodeći dio stupaca. Tako bi konkatenirani indeks s stupcima (prezime, ime) mogao efikasno pronaći rezultat upita s određenim prezimenom ili s prezimenom i imenom, ali ne i samo s imenom. Općenito pravilo je da se u konkatenirani indeks prvo stavljaju stupci kojima se najčešće pristupa.
 
 ### Kako i Zašto poboljšava sustav?
@@ -25,5 +27,7 @@ Konkatenirani indeks može pridonijeti u različitim vrstama aplikacija i sluča
 * geoprostorni podaci, upiti koji uključuji i zemljopisnu širinu i dužinu
 
 ## Arhitektura sustava
+
+---
 
 ![Arhitektura sustava](architecture.png)
