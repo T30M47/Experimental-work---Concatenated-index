@@ -39,6 +39,10 @@ The home page contains a short description on how to benchmark this model, but y
     sudo pacman -S apache-tools 
     or just 
     sudo pacman -S apache
+
+ ### Alpine based Linux
+    ```
+    apk add apache2-utils
     ```
  **I used ab command with -n 1000 and -c 3 parameters.**
 
