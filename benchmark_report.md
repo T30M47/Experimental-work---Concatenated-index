@@ -25,3 +25,5 @@ Konkatenirani indeks može pridonijeti u različitim vrstama aplikacija i sluča
 * geoprostorni podaci, upiti koji uključuji i zemljopisnu širinu i dužinu
 
 ## Arhitektura sustava
+
+![Arhitektura sustava](architecture.png)
