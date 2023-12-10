@@ -14,13 +14,13 @@
     <p>Queries without index should be much slower...</p>
     <p>Looking for all data with spceific values for naziv, cijena and datum_kreiranja on which the index is created.</p>
     <button><a href ="/testWithoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1994-07-18">Run 1st test without Index.</a></button> VS
-    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=2015-06-16">Run 1st test with Index.</a></button>
+    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1996-06-20">Run 1st test with Index.</a></button>
     <br><br>
-    <button><a href ="/testWithoutIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=2023-05-18">Run 2st test without Index.</a></button> VS
-    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1984-03-04">Run 2st test with Index.</a></button>
+    <button><a href ="/testWithoutIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=2023-05-20">Run 2st test without Index.</a></button> VS
+    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1984-03-05">Run 2st test with Index.</a></button>
     <br><br>
-    <button><a href ="/testWithoutIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1973-04-07">Run 3rd test without Index.</a></button> VS
-    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2006-06-23">Run 3rd test with Index.</a></button>  
+    <button><a href ="/testWithoutIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1973-06-07">Run 3rd test without Index.</a></button> VS
+    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2006-06-27">Run 3rd test with Index.</a></button>  
     <br><br>
     <h2>Tests with Part Index (index on only name and price):</h2>
     <p>These tests should be about as slow as without index...</p>
