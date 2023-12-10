@@ -16,5 +16,11 @@ EXPOSE 8000
 # Define environment variable
 ENV NAME World
 
+# Install Apache Benchmark (ab) based on the Linux distribution
+RUN apt-get update && apt-get install -y apache2-utils || \
+    pacman -Syu --noconfirm apache-tools || \
+    pacman -Syu --noconfirm apache || \
+    apk --no-cache add apache2-utils
+
 # Run app.py when the container launches
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
