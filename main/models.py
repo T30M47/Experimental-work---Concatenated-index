@@ -5,8 +5,10 @@ from django.db import models
 
 class Proizvod_bezIndeksa(models.Model):
     naziv = models.CharField(max_length=200)
+    naziv_random = models.CharField(max_length=200, default="Name")
     opis = models.TextField()
     cijena = models.DecimalField(max_digits=10, decimal_places=2)
+    cijena_random = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     dostupna_kolicina = models.PositiveIntegerField(default=0)
     datum_kreiranja = models.DateField()
     datum_azuriranja = models.DateField()
@@ -16,8 +18,10 @@ class Proizvod_bezIndeksa(models.Model):
 
 class Proizvod_SIndeksom(models.Model):
     naziv = models.CharField(max_length=200)
+    naziv_random = models.CharField(max_length=200, default="Name")
     opis = models.TextField()
     cijena = models.DecimalField(max_digits=10, decimal_places=2)
+    cijena_random = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     dostupna_kolicina = models.PositiveIntegerField(default=0)
     datum_kreiranja = models.DateField()
     datum_azuriranja = models.DateField()
@@ -30,8 +34,10 @@ class Proizvod_SIndeksom(models.Model):
 
 class Proizvod_DioIndeksa(models.Model):
     naziv = models.CharField(max_length=200)
+    naziv_random = models.CharField(max_length=200, default="Name")
     opis = models.TextField()
     cijena = models.DecimalField(max_digits=10, decimal_places=2)
+    cijena_random = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     dostupna_kolicina = models.PositiveIntegerField(default=0)
     datum_kreiranja = models.DateField()
     datum_azuriranja = models.DateField()
@@ -44,8 +50,10 @@ class Proizvod_DioIndeksa(models.Model):
 
 class Proizvod_KriviIndeks(models.Model):
     naziv = models.CharField(max_length=200)
+    naziv_random = models.CharField(max_length=200, default="Name")
     opis = models.TextField()
     cijena = models.DecimalField(max_digits=10, decimal_places=2)
+    cijena_random = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     dostupna_kolicina = models.PositiveIntegerField(default=0)
     datum_kreiranja = models.DateField()
     datum_azuriranja = models.DateField()
