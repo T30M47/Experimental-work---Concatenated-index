@@ -78,7 +78,7 @@ class GetDataWithoutIndexLessRows(View):
         cijena = request.GET.get('cijena', '')
         datum_kreiranja = request.GET.get('datum_kreiranja', '')
 
-        proizvodi = Proizvod_KriviIndeks.objects.filter(
+        proizvodi = Proizvod_bezIndeksa_MaloRedaka.objects.filter(
             naziv = naziv,
             cijena = cijena,
             datum_kreiranja = datum_kreiranja
@@ -93,7 +93,7 @@ class GetDataWithIndexLessRows(View):
         cijena = request.GET.get('cijena', '')
         datum_kreiranja = request.GET.get('datum_kreiranja', '')
 
-        proizvodi = Proizvod_KriviIndeks.objects.filter(
+        proizvodi = Proizvod_SIndeksom_MaloRedaka.objects.filter(
             naziv = naziv,
             cijena = cijena,
             datum_kreiranja = datum_kreiranja
@@ -108,7 +108,7 @@ class GetDataWithIndexBigCard(View):
         cijena = request.GET.get('cijena', '')
         datum_kreiranja = request.GET.get('datum_kreiranja', '')
 
-        proizvodi = Proizvod_KriviIndeks.objects.filter(
+        proizvodi = Proizvod_SIndeksom_VelikaKard.objects.filter(
             naziv = naziv,
             cijena = cijena,
             datum_kreiranja = datum_kreiranja
@@ -123,7 +123,7 @@ class GetDataWithPartIndexBigCard(View):
         cijena = request.GET.get('cijena', '')
         datum_kreiranja = request.GET.get('datum_kreiranja', '')
 
-        proizvodi = Proizvod_KriviIndeks.objects.filter(
+        proizvodi = Proizvod_DioIndeksa_VelikaKard.objects.filter(
             naziv = naziv,
             cijena = cijena,
             datum_kreiranja = datum_kreiranja
@@ -138,7 +138,7 @@ class GetDataWithWrongIndexBigCard(View):
         cijena = request.GET.get('cijena', '')
         datum_kreiranja = request.GET.get('datum_kreiranja', '')
 
-        proizvodi = Proizvod_KriviIndeks.objects.filter(
+        proizvodi = Proizvod_KriviIndeks_VelikaKard.objects.filter(
             naziv = naziv,
             cijena = cijena,
             datum_kreiranja = datum_kreiranja
@@ -232,7 +232,7 @@ def testWithoutIndexLessRows(request):
     cijena = request.GET.get('cijena', '')
     datum_kreiranja = request.GET.get('datum_kreiranja', '')
     
-    url = f"http://localhost:8000/withWrongIndex/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
+    url = f"http://localhost:8000/withoutIndexLessRows/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
     result = subprocess.run(['ab', '-n', '1000', '-c', '3', url], capture_output=True, text=True)
     output = result.stdout.splitlines()
     
@@ -252,7 +252,7 @@ def testWithIndexLessRows(request):
     cijena = request.GET.get('cijena', '')
     datum_kreiranja = request.GET.get('datum_kreiranja', '')
     
-    url = f"http://localhost:8000/withWrongIndex/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
+    url = f"http://localhost:8000/withIndexLessRows/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
     result = subprocess.run(['ab', '-n', '1000', '-c', '3', url], capture_output=True, text=True)
     output = result.stdout.splitlines()
     
@@ -272,7 +272,7 @@ def testWithIndexBigCard(request):
     cijena = request.GET.get('cijena', '')
     datum_kreiranja = request.GET.get('datum_kreiranja', '')
     
-    url = f"http://localhost:8000/withWrongIndex/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
+    url = f"http://localhost:8000/withIndexBigCard/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
     result = subprocess.run(['ab', '-n', '1000', '-c', '3', url], capture_output=True, text=True)
     output = result.stdout.splitlines()
     
@@ -292,7 +292,7 @@ def testWithPartIndexBigCard(request):
     cijena = request.GET.get('cijena', '')
     datum_kreiranja = request.GET.get('datum_kreiranja', '')
     
-    url = f"http://localhost:8000/withWrongIndex/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
+    url = f"http://localhost:8000/withPartIndexBigCard/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
     result = subprocess.run(['ab', '-n', '1000', '-c', '3', url], capture_output=True, text=True)
     output = result.stdout.splitlines()
     
@@ -312,7 +312,7 @@ def testWithWrongIndexBigCard(request):
     cijena = request.GET.get('cijena', '')
     datum_kreiranja = request.GET.get('datum_kreiranja', '')
     
-    url = f"http://localhost:8000/withWrongIndex/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
+    url = f"http://localhost:8000/withWrongIndexBigCard/?naziv={naziv}&cijena={cijena}&datum_kreiranja={datum_kreiranja}"
     result = subprocess.run(['ab', '-n', '1000', '-c', '3', url], capture_output=True, text=True)
     output = result.stdout.splitlines()
     
