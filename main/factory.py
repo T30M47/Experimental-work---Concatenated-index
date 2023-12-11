@@ -8,31 +8,102 @@ from main.models import *
 
 ## Defining a factory
 
-class ProizvodFactory(DjangoModelFactory):
+
+class Proizvod_BezIndeksaFactory(DjangoModelFactory):
     class Meta:
-        abstract = True
-    
+        model = Proizvod_bezIndeksa
+
     naziv = factory.Iterator(["bread", "eggs", "milk"])
-    naziv_random = factory.Faker("word")
     opis = factory.Faker("sentence", nb_words = 10)
     cijena = factory.Iterator([1.99, 9.99, 2.99])
-    cijena_random = factory.Faker("pydecimal", left_digits=random.choice([1, 2, 3]), right_digits=2, positive = True)
     dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
     datum_kreiranja = factory.Faker('date_time')
     datum_azuriranja = factory.Faker('date_time')
 
-class Proizvod_BezIndeksaFactory(ProizvodFactory):
-    class Meta:
-        model = Proizvod_bezIndeksa
-
-class Proizvod_SIndeksomFactory(ProizvodFactory):
+class Proizvod_SIndeksomFactory(DjangoModelFactory):
     class Meta:
         model = Proizvod_SIndeksom
 
-class Proizvod_DioIndeksaFactory(ProizvodFactory):
+    naziv = factory.Iterator(["bread", "eggs", "milk"])
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Iterator([1.99, 9.99, 2.99])
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+
+class Proizvod_DioIndeksaFactory(DjangoModelFactory):
     class Meta:
         model = Proizvod_DioIndeksa
 
-class Proizvod_KriviIndeksFactory(ProizvodFactory):
+    naziv = factory.Iterator(["bread", "eggs", "milk"])
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Iterator([1.99, 9.99, 2.99])
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+
+class Proizvod_KriviIndeksFactory(DjangoModelFactory):
     class Meta:
         model = Proizvod_KriviIndeks
+
+    naziv = factory.Iterator(["bread", "eggs", "milk"])
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Iterator([1.99, 9.99, 2.99])
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+
+class Proizvod_BezIndeksa_MaloRedaka_Factory(DjangoModelFactory):
+    class Meta:
+        model = Proizvod_bezIndeksa_MaloRedaka
+    
+    naziv = factory.Iterator(["bread", "eggs", "milk"])
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Iterator([1.99, 9.99, 2.99])
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+
+class Proizvod_SIndeksom_MaloRedaka_Factory(DjangoModelFactory):
+    class Meta:
+        model = Proizvod_SIndeksom_MaloRedaka
+
+    naziv = factory.Iterator(["bread", "eggs", "milk"])
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Iterator([1.99, 9.99, 2.99])
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+
+class Proizvod_DioIndeksa_VelikaKard_Factory(DjangoModelFactory):
+    class Meta:
+        model = Proizvod_DioIndeksa_VelikaKard
+
+    naziv = factory.Faker("word")
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Faker("pydecimal", left_digits=random.choice([1, 2, 3]), right_digits=2, positive = True)
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+
+class Proizvod_KriviIndeks_VelikaKard_Factory(DjangoModelFactory):
+    class Meta:
+        model = Proizvod_KriviIndeks_VelikaKard
+
+    naziv = factory.Faker("word")
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Faker("pydecimal", left_digits=random.choice([1, 2, 3]), right_digits=2, positive = True)
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')
+
+class Proizvod_SIndeksom_VelikaKard_Factory(DjangoModelFactory):
+    class Meta:
+        model = Proizvod_SIndeksom_VelikaKard
+
+    naziv = factory.Faker("word")
+    opis = factory.Faker("sentence", nb_words = 10)
+    cijena = factory.Faker("pydecimal", left_digits=random.choice([1, 2, 3]), right_digits=2, positive = True)
+    dostupna_kolicina = factory.fuzzy.FuzzyInteger(0, 999)
+    datum_kreiranja = factory.Faker('date_time')
+    datum_azuriranja = factory.Faker('date_time')    
