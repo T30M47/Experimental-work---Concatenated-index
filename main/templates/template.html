@@ -7,31 +7,36 @@
 </head>
 <body>
     <h1>Testing read response time with and without <strong>Concatenated Index</strong></h1>
+    <p>The tests are done on different versions of the same Proizvod table with columns naziv, cijena, opis, dostupna_kolicina, datum_kreiranja and datum_azuriranja.
     <p>After the test is done and You get a JSON response, You should return to the home page using the back arrow in Your browser.</p>
+    <p>I used ab with -n 1000 and -c 3 parameters to do the test.</p>
     <p>The longest test will take about 6 to 7 seconds so You should be patient (check if Your browser is loading)...</p>
     <p><i>If you have trouble with starting the test check if You have ab installed (Markdown on GitHub has instructions for installing.)</i></p>
+    <p>You can watch "Time per request" or percentiles above 90 for comparison.</p>
+    
     <h2>Testing read response time with and without Index based on the size of the table:</h2>
-    <p>First we check for response times with smaller amount of data and there should not be a big difference</p>
-    <p>Looking for all data with specific values for naziv, cijena and datum_kreiranja on which the index is created.</p>
-    <button><a href ="/testWithoutIndexLessRows/?naziv=bread&cijena=1.99&datum_kreiranja=1994-07-17">Run 1st test without Index.</a></button> VS
-    <button><a href ="/testWithIndexLessRows/?naziv=bread&cijena=1.99&datum_kreiranja=1996-06-20">Run 1st test with Index.</a></button>
+    <p><strong>Looking for all data with specific values for naziv, cijena and datum_kreiranja on which the index is created.</strong></p>
+    <p>First we check for response times on Proizvod table with small amount of rows (100) and there should not be a big difference because of the index.</p>
+    <button><a href ="/testWithoutIndexLessRows/?naziv=bread&cijena=1.99&datum_kreiranja=1981-10-12">Run 1st test without Index and less rows.</a></button> VS
+    <button><a href ="/testWithIndexLessRows/?naziv=bread&cijena=1.99&datum_kreiranja=1994-01-07">Run 1st test with Index and less rows.</a></button>
     <br><br>
-    <button><a href ="/testWithoutIndexLessRows/?naziv=eggs&cijena=9.99&datum_kreiranja=2023-05-20">Run 2st test without Index.</a></button> VS
-    <button><a href ="/testWithIndexLessRows/?naziv=eggs&cijena=9.99&datum_kreiranja=1984-03-05">Run 2st test with Index.</a></button>
+    <button><a href ="/testWithoutIndexLessRows/?naziv=eggs&cijena=9.99&datum_kreiranja=2016-01-08">Run 2st test without Index and less rows.</a></button> VS
+    <button><a href ="/testWithIndexLessRows/?naziv=eggs&cijena=9.99&datum_kreiranja=1999-02-22">Run 2st test with Index and less rows.</a></button>
     <br><br>
-    <button><a href ="/testWithoutIndexLessRows/?naziv=milk&cijena=2.99&datum_kreiranja=1973-06-07">Run 3rd test without Index.</a></button> VS
-    <button><a href ="/testWithIndexLessRows/?naziv=milk&cijena=2.99&datum_kreiranja=2006-06-27">Run 3rd test with Index.</a></button>  
-    <br><br>
-    <h2>Tests with Part Index (index on only name and price):</h2>
-    <p>These tests should be about as slow as without index...</p>
-    <button><a href ="/testWithPartIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1976-11-29">Run 1st test with part Index.</a></button>
-    <button><a href ="/testWithPartIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1991-11-22">Run 2st test with part Index.</a></button>
-    <button><a href ="/testWithPartIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2008-08-15">Run 3rd test with part Index.</a></button><br>
+    <button><a href ="/testWithoutIndexLessRows/?naziv=milk&cijena=2.99&datum_kreiranja=1980-09-10">Run 3rd test without Index and less rows.</a></button> VS
+    <button><a href ="/testWithIndexLessRows/?naziv=milk&cijena=2.99&datum_kreiranja=1994-04-29">Run 3rd test with Index and less rows.</a></button>  
     <br>
-    <h2>Tests with Wrong Index (reverse order of columns):</h2>
-    <p>These tests should be about the same as with normal index...</p>
-    <button><a href ="/testWithWrongIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1977-01-12">Run 1st test with wrong Index.</a></button>
-    <button><a href ="/testWithWrongIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=2022-06-23">Run 2st test with wrong Index.</a></button>
-    <button><a href ="/testWithWrongIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2002-02-24">Run 3rd test with wrong Index.</a></button><br>
+    <p>Now we check response times when we have Proizvod table with large number of rows (100000) and index should make queries much faster.</p>
+    <button><a href ="/testWithoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1981-10-10">Run 1st test without Index and more rows.</a></button> VS
+    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1994-01-05">Run 1st test with Index and more rows.</a></button>
+    <br><br>
+    <button><a href ="/testWithoutIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=2016-01-07">Run 2st test without Index and more rows.</a></button> VS
+    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1999-02-20">Run 2st test with Index and more rows.</a></button>
+    <br><br>
+    <button><a href ="/testWithoutIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1980-09-17">Run 3rd test without Index and more rows.</a></button> VS
+    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1994-04-19">Run 3rd test with Index and more rows.</a></button>  
+    <br>
+    <br>
+  
 </body>
 </html>
