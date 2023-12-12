@@ -51,7 +51,7 @@ class Proizvod_KriviIndeks(models.Model):
     datum_azuriranja = models.DateField()
 
     class Meta:
-          indexes = [models.Index(fields=['datum_kreiranja', 'naziv', 'cijena'])]
+          indexes = [models.Index(fields=['datum_kreiranja', 'cijena', 'naziv'])]
 
     def __str__(self):
         return f"{self.naziv} - ${self.cijena}"
@@ -118,7 +118,7 @@ class Proizvod_KriviIndeks_VelikaKard(models.Model):
     datum_azuriranja = models.DateField()
 
     class Meta:
-          indexes = [models.Index(fields=['datum_kreiranja', 'naziv', 'cijena'])]
+          indexes = [models.Index(fields=['datum_kreiranja', 'cijena', 'naziv'])]
 
     def __str__(self):
         return f"{self.naziv} - ${self.cijena}"
