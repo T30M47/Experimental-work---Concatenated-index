@@ -16,7 +16,7 @@
     
     <h2>Testing read response time with and without Index based on the size of the table:</h2>
     <p><strong>Looking for all data with specific values for naziv, cijena and datum_kreiranja on which the index is created.</strong></p>
-    <p>First we check for response times on Proizvod table with small amount of rows (100) and there should not be a big difference because of the index.</p>
+    <p>First we check differences in response times on Proizvod table with small amount of rows (100) and there should not be a big difference because of the index.</p>
     <button><a href ="/testWithoutIndexLessRows/?naziv=bread&cijena=1.99&datum_kreiranja=1981-10-12">Run 1st test without Index and less rows.</a></button> VS
     <button><a href ="/testWithIndexLessRows/?naziv=bread&cijena=1.99&datum_kreiranja=1994-01-07">Run 1st test with Index and less rows.</a></button>
     <br><br>
@@ -26,7 +26,7 @@
     <button><a href ="/testWithoutIndexLessRows/?naziv=milk&cijena=2.99&datum_kreiranja=1980-09-10">Run 3rd test without Index and less rows.</a></button> VS
     <button><a href ="/testWithIndexLessRows/?naziv=milk&cijena=2.99&datum_kreiranja=1994-04-29">Run 3rd test with Index and less rows.</a></button>  
     <br>
-    <p>Now we check response times when we have Proizvod table with large number of rows (100000) and index should make queries much faster.</p>
+    <p>Now we check differences in response times when we have Proizvod table with large number of rows (100000) and index should make queries much faster.</p>
     <button><a href ="/testWithoutIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1981-10-10">Run 1st test without Index and more rows.</a></button> VS
     <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=1994-01-05">Run 1st test with Index and more rows.</a></button>
     <br><br>
@@ -37,6 +37,49 @@
     <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1994-04-19">Run 3rd test with Index and more rows.</a></button>  
     <br>
     <br>
-  
+    <h2>Testing read response time with full and part (only on columns naziv and cijena) index based on the number of different values of columns naziv and cijena.</h2>
+    <p><strong>Looking for all data with specific values for naziv, cijena and datum_kreiranja on which the index is created.</strong></p>
+    <p>First we check the difference in response times on Proizvod table when columns naziv and cijena have a large number of different values and here there should not be any difference because the part index can reduce the number of rows for search.</p>
+    <button><a href ="/testWithIndexBigCard/?naziv=look&cijena=27.46&datum_kreiranja=2003-02-02">Run 1st test with full Index and big cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndexBigCard/?naziv=represent&cijena=2.39&datum_kreiranja=2009-05-04">Run 1st test with Part Index and big cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndexBigCard/?naziv=property&cijena=803.97&datum_kreiranja=1977-12-15">Run 2nd test with full Index and big cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndexBigCard/?naziv=prevent&cijena=20.30&datum_kreiranja=1992-01-09">Run 2nd test with Part Index and big cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndexBigCard/?naziv=shoulder&cijena=746.04&datum_kreiranja=1988-07-17">Run 3rd test with full Index and big cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndexBigCard/?naziv=power&cijena=10.03&datum_kreiranja=2017-05-22">Run 3rd test with Part Index and big cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <p>Then we check the difference in response times on Proizvod table when columns naziv and cijena have a small number of possible values (3) and the difference is big because the part index cannot reduce the number of rows it has to search.</p>
+    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2006-01-31">Run 1st test with full Index and small cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndex/?naziv=milk&cijena=2.99&datum_kreiranja=1984-10-30">Run 1st test with Part Index and small cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1979-01-27">Run 2nd test with full Index and small cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1984-10-28">Run 2nd test with Part Index and small cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=2005-03-13">Run 3rd test with full Index and small cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndex/?naziv=bread&cijena=1.99&datum_kreiranja=2001-04-16">Run 3rd test with Part Index and small cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <h2>Testing read response time with full and wrong (opposite order of columns) index based on the number of different values of columns naziv and cijena.</h2>
+    <p><strong>Looking for all data with specific values for naziv, cijena and datum_kreiranja on which the index is created.</strong></p>
+    <p>First we check the difference in response times on Proizvod table when columns naziv and cijena have a large number of different values and here there should not be any difference because the part index can reduce the number of rows for search.</p>
+    <button><a href ="/testWithIndexBigCard/?naziv=forward&cijena=660.04&datum_kreiranja=2020-01-12">Run 1st test with full Index and big cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithWrongIndexBigCard/?naziv=point&cijena=74.47&datum_kreiranja=2008-09-30">Run 1st test with Part Index and big cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndexBigCard/?naziv=property&cijena=803.97&datum_kreiranja=1977-12-15">Run 2nd test with full Index and big cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndexBigCard/?naziv=prevent&cijena=20.30&datum_kreiranja=1992-01-09">Run 2nd test with Part Index and big cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndexBigCard/?naziv=shoulder&cijena=746.04&datum_kreiranja=1988-07-17">Run 3rd test with full Index and big cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndexBigCard/?naziv=power&cijena=10.03&datum_kreiranja=2017-05-22">Run 3rd test with Part Index and big cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <p>Then we check the difference in response times on Proizvod table when columns naziv and cijena have a small number of possible values (3) and the difference is big because the part index cannot reduce the number of rows it has to search.</p>
+    <button><a href ="/testWithIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2011-03-25">Run 1st test with full Index and small cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithWrongIndex/?naziv=milk&cijena=2.99&datum_kreiranja=2013-04-07">Run 1st test with Part Index and small cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1979-01-27">Run 2nd test with full Index and small cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndex/?naziv=eggs&cijena=9.99&datum_kreiranja=1984-10-28">Run 2nd test with Part Index and small cardinality of naziv and cijena.</a></button>
+    <br><br> 
+    <button><a href ="/testWithIndex/?naziv=bread&cijena=1.99&datum_kreiranja=2005-03-13">Run 3rd test with full Index and small cardinality of naziv and cijena.</a></button> VS
+    <button><a href ="/testWithPartIndex/?naziv=bread&cijena=1.99&datum_kreiranja=2001-04-16">Run 3rd test with Part Index and small cardinality of naziv and cijena.</a></button>
+    <br><br> 
 </body>
 </html>
