@@ -30,7 +30,7 @@ Konkatenirani indeks može pridonijeti u različitim vrstama aplikacija i sluča
 
 ---
 
-![Arhitektura sustava](architecture.png)
+![Arhitektura sustava](sys_architecture.png)
 
 Sam sustav sam implementirao kroz Django web aplikaciju. Kada stvorimo django web aplikaciju s naredbom:
 ```
